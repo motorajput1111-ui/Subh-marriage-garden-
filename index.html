@@ -8,7 +8,7 @@
 <style>
 body{
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI',sans-serif;
     background:#0b0b14;
     color:#eaeaea;
 }
@@ -17,21 +17,10 @@ header{
     text-align:center;
     padding:60px 20px;
 }
-header h1{
-    font-size:42px;
-    color:#f5c16c;
-    margin:0;
-}
-header p{
-    color:#ccc;
-    font-size:18px;
-}
+header h1{color:#f5c16c;font-size:42px;margin:0;}
+header p{color:#ccc;font-size:18px;}
 
-section{
-    max-width:1000px;
-    margin:auto;
-    padding:40px 20px;
-}
+section{max-width:1000px;margin:auto;padding:40px 20px;}
 .box{
     background:#111827;
     border-radius:14px;
@@ -39,34 +28,23 @@ section{
     margin-bottom:30px;
     box-shadow:0 0 25px rgba(245,193,108,0.15);
 }
-h2{
-    color:#f5c16c;
-    margin-bottom:15px;
-}
-ul{
-    padding-left:20px;
-}
-li{
-    margin-bottom:8px;
-}
+h2{color:#f5c16c;}
+ul{padding-left:20px;}
+li{margin-bottom:8px;}
 
-input, textarea, select{
+input,textarea,select{
     width:100%;
     padding:12px;
+    margin-bottom:15px;
     border:none;
     border-radius:8px;
-    outline:none;
     background:#0b0b14;
     color:#fff;
-    margin-bottom:15px;
 }
-textarea{
-    resize:none;
-    height:100px;
-}
+textarea{height:100px;resize:none;}
+
 button{
     background:#f5c16c;
-    color:#000;
     border:none;
     padding:14px;
     width:100%;
@@ -74,33 +52,60 @@ button{
     font-size:16px;
     cursor:pointer;
 }
-button:hover{
-    background:#e0aa4f;
+button:hover{background:#e0aa4f;}
+
+.langBtn{
+    background:#f5c16c;
+    border:none;
+    padding:8px 18px;
+    margin:5px;
+    border-radius:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.slider{
+    position:relative;
+    height:280px;
+    overflow:hidden;
+    border-radius:12px;
+}
+.slide{
+    position:absolute;
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    opacity:0;
+    transition:0.6s;
+}
+.slide.active{opacity:1;}
+.slider-btns{text-align:center;margin-top:10px;}
+.slider-btns button{
+    background:#f5c16c;
+    border:none;
+    padding:6px 14px;
+    border-radius:50%;
+    cursor:pointer;
 }
 
 .map iframe{
     width:100%;
     height:350px;
-    border-radius:12px;
     border:none;
+    border-radius:12px;
 }
 
 .contact{
     background:#06060c;
     text-align:center;
-    padding:35px 20px;
+    padding:35px;
 }
-.contact a{
-    color:#f5c16c;
-    text-decoration:none;
-    font-weight:bold;
-}
+.contact a{color:#f5c16c;text-decoration:none;font-weight:bold;}
 
 footer{
     background:#000;
     text-align:center;
     padding:15px;
-    font-size:14px;
     color:#888;
 }
 </style>
@@ -108,101 +113,126 @@ footer{
 
 <body>
 
+<!-- 🔊 Background Music (Auto Play) -->
+<iframe id="bgMusic"
+src="https://www.youtube.com/embed/lUtOK46b9qI?autoplay=1&mute=1&loop=1&playlist=lUtOK46b9qI"
+allow="autoplay"
+style="display:none"></iframe>
+
 <header>
-    <h1>Subh Marriage Garden</h1>
-    <p>A Royal Venue for Weddings & Grand Celebrations</p>
+<h1>Subh Marriage Garden</h1>
+<p data-en="A Royal Venue for Weddings & Grand Celebrations"
+   data-hi="शादी और भव्य आयोजनों के लिए एक शाही स्थल">
+A Royal Venue for Weddings & Grand Celebrations
+</p>
 </header>
+
+<div style="text-align:center;margin:20px;">
+<button class="langBtn" onclick="setLang('en')">English</button>
+<button class="langBtn" onclick="setLang('hi')">हिंदी</button>
+</div>
 
 <section>
 
 <div class="box">
-    <h2>Event Planning & Venue Rental</h2>
-    <ul>
-        <li>Wedding & Reception Planning</li>
-        <li>Engagement, Birthday & Anniversary Events</li>
-        <li>Corporate & Cultural Programs</li>
-        <li>Complete Venue Rental with Decoration</li>
-        <li>Customized Royal Event Packages</li>
-    </ul>
+<h2 data-en="Event Planning & Venue Rental"
+    data-hi="इवेंट प्लानिंग और वेन्यू रेंटल">
+Event Planning & Venue Rental</h2>
+<ul>
+<li>Wedding & Reception Planning</li>
+<li>Engagement, Birthday & Anniversary</li>
+<li>Corporate & Cultural Events</li>
+<li>Complete Decoration & Setup</li>
+<li>Royal Customized Packages</li>
+</ul>
 </div>
 
 <div class="box">
-    <h2>Marriage Garden Details</h2>
-    <ul>
-        <li>Spacious open royal garden</li>
-        <li>Capacity: 500+ guests</li>
-        <li>Large parking facility</li>
-        <li>Premium lighting & electricity</li>
-        <li>Clean & well-maintained premises</li>
-    </ul>
+<h2 data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</h2>
+<div class="slider">
+<img src="images/img1.jpg" class="slide active">
+<img src="images/img2.jpg" class="slide">
+<img src="images/img3.jpg" class="slide">
+<img src="images/img4.jpg" class="slide">
+<img src="images/img5.jpg" class="slide">
+</div>
+<div class="slider-btns">
+<button onclick="prevSlide()">❮</button>
+<button onclick="nextSlide()">❯</button>
+</div>
 </div>
 
 <div class="box">
-    <h2>Booking / Enquiry Form</h2>
-    <form onsubmit="sendWhatsApp(); return false;">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="tel" id="mobile" placeholder="Mobile Number" required>
-        <input type="date" id="date" required>
-
-        <select id="event">
-            <option>Wedding</option>
-            <option>Reception</option>
-            <option>Engagement</option>
-            <option>Birthday Party</option>
-            <option>Corporate Event</option>
-            <option>Other Event</option>
-        </select>
-
-        <textarea id="message" placeholder="Additional Details"></textarea>
-
-        <button type="submit">Send Enquiry on WhatsApp</button>
-    </form>
+<h2 data-en="Booking / Enquiry"
+    data-hi="बुकिंग / पूछताछ">Booking / Enquiry</h2>
+<form onsubmit="sendWhatsApp();return false;">
+<input id="name" placeholder="Name" required>
+<input id="mobile" placeholder="Mobile Number" required>
+<input id="date" type="date" required>
+<select id="event">
+<option>Wedding</option>
+<option>Reception</option>
+<option>Birthday</option>
+<option>Corporate</option>
+</select>
+<textarea id="message" placeholder="Message"></textarea>
+<button type="submit">Send on WhatsApp</button>
+</form>
 </div>
 
 <div class="box map">
-    <h2>Our Location</h2>
-    <iframe 
-        src="https://www.google.com/maps?q=Subh%20Marriage%20Garden&output=embed">
-    </iframe>
-    <p style="margin-top:10px;">
-        <a href="https://maps.app.goo.gl/DJAW8JDGvE4k3sPq9" target="_blank" style="color:#f5c16c;">
-            📍 Open in Google Maps
-        </a>
-    </p>
+<h2 data-en="Our Location" data-hi="हमारा स्थान">Our Location</h2>
+<iframe src="https://www.google.com/maps?q=Subh%20Marriage%20Garden&output=embed"></iframe>
+<p><a href="https://maps.app.goo.gl/DJAW8JDGvE4k3sPq9" target="_blank">📍 Open in Google Maps</a></p>
 </div>
 
 </section>
 
 <div class="contact">
-    <h2>Contact Us</h2>
-    <p>📞 Phone: <a href="tel:917879404509">+91 7879404509</a></p>
-    <p>💬 WhatsApp: <a href="https://wa.me/917879404509" target="_blank">Chat on WhatsApp</a></p>
+<p>📞 <a href="tel:917879404509">+91 7879404509</a></p>
+<p>💬 <a href="https://wa.me/917879404509">WhatsApp Chat</a></p>
 </div>
 
 <footer>
-    © 2026 Subh Marriage Garden | Royal Event Destination
+© 2026 Subh Marriage Garden | Royal Event Destination
 </footer>
 
 <script>
-function sendWhatsApp(){
-    var name = document.getElementById("name").value;
-    var mobile = document.getElementById("mobile").value;
-    var date = document.getElementById("date").value;
-    var event = document.getElementById("event").value;
-    var message = document.getElementById("message").value;
-
-    var whatsappNumber = "917879404509";
-
-    var text =
-        "New Enquiry - Subh Marriage Garden%0A%0A" +
-        "Name: " + name + "%0A" +
-        "Mobile: " + mobile + "%0A" +
-        "Event: " + event + "%0A" +
-        "Event Date: " + date + "%0A" +
-        "Details: " + message;
-
-    window.open("https://wa.me/" + whatsappNumber + "?text=" + text, "_blank");
+// Language toggle
+function setLang(l){
+ document.querySelectorAll('[data-en]').forEach(e=>{
+  e.innerText=e.getAttribute('data-'+l);
+ });
 }
+
+// Slider
+let i=0;
+const slides=document.querySelectorAll('.slide');
+function show(n){
+ slides.forEach(s=>s.classList.remove('active'));
+ slides[n].classList.add('active');
+}
+function nextSlide(){i=(i+1)%slides.length;show(i);}
+function prevSlide(){i=(i-1+slides.length)%slides.length;show(i);}
+setInterval(nextSlide,4000);
+
+// WhatsApp
+function sendWhatsApp(){
+ let t=
+ `New Enquiry - Subh Marriage Garden%0A
+ Name: ${name.value}%0A
+ Mobile: ${mobile.value}%0A
+ Event: ${event.value}%0A
+ Date: ${date.value}%0A
+ Message: ${message.value}`;
+ window.open("https://wa.me/917879404509?text="+t);
+}
+
+// Unmute music on first click
+document.body.addEventListener('click',()=>{
+ document.getElementById("bgMusic").src=
+ "https://www.youtube.com/embed/lUtOK46b9qI?autoplay=1&loop=1&playlist=lUtOK46b9qI";
+},{once:true});
 </script>
 
 </body>
